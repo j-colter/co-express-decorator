@@ -1,6 +1,6 @@
 {
   "name": "co-express-decorator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ts decorator, fork from express-decorator",
   "main": "./lib/index.js",
   "types": "./types/index.d.ts",

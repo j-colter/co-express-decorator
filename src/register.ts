@@ -30,19 +30,19 @@ function extractParameters(req: Request, res: Response, params: Param[]) {
 }
 
 /**
- * Register Service Class.
- *
- * ```
- * RegisterController(express, [servies])
- * ```
+ * 注册controller
+ * @param app
+ * @param serviceClasses
+ * @param args 自定义构造参数
+ * @constructor
  */
-export function RegisterController(app: Express, serviceClasses: any[]) {
+export function RegisterController(app: Express, serviceClasses: any[], ...args) {
 
   let router = Router();
 
   serviceClasses.forEach(ServiceClazz => {
     let meta = getClazz(ServiceClazz.prototype);
-    let serviceInstance = new ServiceClazz();
+    let serviceInstance = new ServiceClazz(...args);
     let routes = meta.routes;
 
     for (const methodName in routes) {

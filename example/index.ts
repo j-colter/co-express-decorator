@@ -9,6 +9,7 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
-RegisterController(app, [UserController]);
+const context = { a: 1, b: 2 };
+RegisterController(app, [UserController], context);
 
 app.listen(3000, () => console.log('Example app listening at http://%s:%s', '127.0.0.1', 3000));

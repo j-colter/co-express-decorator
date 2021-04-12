@@ -13,6 +13,9 @@ import {
 
 @Path('/user', [ testMiddleWare2 ])
 export class UserController {
+  constructor(ctx) {
+    console.log('user---', ctx);
+  }
 
   @GET('/:id', [ testMiddleWare1 ])
   list(@DPathParam('id') id: string, @DQueryParam('name') name: string, @DResponse response, @DRequest request) {

@@ -20,7 +20,7 @@ export class UserController {
   @GET('/:id', [ testMiddleWare1 ])
   list(@DPathParam('id') id: string, @DQueryParam('name') name: string, @DResponse response, @DRequest request) {
     console.log('id-->', id);
-    console.log('response', response);
+    // console.log('response', response);
     // console.log('request', request);
 
     return {id, name}

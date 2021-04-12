@@ -13,11 +13,11 @@ function extractParameters(req: Request, res: Response, params: Param[]) {
   if (!params) return;
 
   let paramHandlerTpe = {
-    'query': (paramName: string) => req.query[paramName],
-    'path': (paramName: string) => req.params[paramName],
-    'form': (paramName: string) => req.body[paramName],
-    'cookie': (paramName: string) => req.cookies && req.cookies[paramName],
-    'header': (paramName) => req.get(paramName),
+    'query': (paramName: string) => transformParam(req.query[paramName]),
+    'path': (paramName: string) => transformParam(req.params[paramName]),
+    'form': (paramName: string) => transformParam(req.body[paramName]),
+    'cookie': (paramName: string) => transformParam(req.cookies && req.cookies[paramName]),
+    'header': (paramName) => transformParam(req.get(paramName)),
     'request': () => req,
     'response': () => res,
   };
@@ -28,6 +28,16 @@ function extractParameters(req: Request, res: Response, params: Param[]) {
 
   return args;
 }
+
+/**
+ * 参数类型调整
+ * @param value
+ */
+const transformParam = (value: any) => {
+  if (!value) return value;
+  if (isNaN(value)) return value;
+  return +value;
+};
 
 /**
  * 注册controller

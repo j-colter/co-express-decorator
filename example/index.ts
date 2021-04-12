@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { RegisterController } from '../src/register';
+import { RegisterController } from '../src';
 import { UserController } from './UserController';
 
 const app = express();

@@ -9,7 +9,7 @@ import {
   POST,
   PUT,
   DQueryParam, DRequest, DResponse
-} from '../src/decorator';
+} from '../src';
 
 @Path('/user', [ testMiddleWare2 ])
 export class UserController {
